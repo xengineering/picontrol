@@ -2,7 +2,7 @@
 
 
 """
-    web-template - A Template Project for dynamic Web Applications.
+    picontrol - A small Web Application to shutdown or reboot your Raspberry Pi.
 
     Copyright (C) 2020  xengineering
 
