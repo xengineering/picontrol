@@ -7,5 +7,4 @@ A small Web Application to shutdown or reboot your Raspberry Pi.
 
 ## Current State
 
-**This project is currently in early development state. It is not yet usable.**
-
+The code works but there is still documentation / automation missing.

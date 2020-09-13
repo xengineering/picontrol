@@ -21,26 +21,55 @@
 """
 
 
+import os
 from waitress import serve
-from flask import Flask, render_template, current_app
+from flask import Flask, render_template, current_app, request
 
 
 app = Flask(__name__)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     return render_template('index.html')
 
 
-@app.route('/static/css/<css_file>')
+@app.route('/static/css/<css_file>', methods=['GET'])
 def css(css_file):
     return current_app.send_static_file("css/{}".format(css_file))
 
 
-@app.route('/favicon.ico')
+@app.route('/static/js/<js_file>', methods=['GET'])
+def js(js_file):
+    return current_app.send_static_file("js/{}".format(js_file))
+
+
+@app.route('/favicon.ico', methods=['GET'])
 def favicon():
     return current_app.send_static_file("img/favicon.ico")
+
+
+@app.route('/api', methods=['POST'])
+def api():
+    data = request.json
+
+    print("Data: {}".format(data))
+    
+    try:
+        command = data["cmd"]
+    except:
+        return "Please provide a valid 'cmd' entry in the json dictionary!"
+
+    if command == "poweroff":
+        retval = {"return_value":"ok","request":data}
+        os.system("sudo poweroff")
+    elif command == "reboot":
+        retval = {"return_value":"ok","request":data}
+        os.system("sudo reboot")
+    else:
+        retval = {"return_value":"unknown command","request":data}
+
+    return retval
 
 
 if __name__ == '__main__':
