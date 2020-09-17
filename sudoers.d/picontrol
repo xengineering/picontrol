@@ -1,0 +1,1 @@
+picontrol ALL=NOPASSWD: /sbin/halt, /sbin/reboot, /sbin/poweroff

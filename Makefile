@@ -2,6 +2,7 @@
 .PHONY: install uninstall
 
 install :
+	install -Dm 600 "sudoers.d/picontrol" "/etc/sudoers.d/picontrol"
 	install -Dm 644 "main.py" "/usr/share/eu.xengineering.picontrol/main.py"
 	install -Dm 644 "picontrol.service" "/usr/lib/systemd/system/picontrol.service"
 	install -Dm 644 "static/css/style.css" "/usr/share/eu.xengineering.picontrol/static/css/style.css"
@@ -10,5 +11,6 @@ install :
 	install -Dm 644 "templates/index.html" "/usr/share/eu.xengineering.picontrol/templates/index.html"
 
 uninstall :
+	rm -f /etc/sudoers.d/picontrol
 	rm -f /usr/lib/systemd/system/picontrol.service
 	rm -rf /usr/share/eu.xengineering.picontrol/
