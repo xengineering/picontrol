@@ -35,3 +35,7 @@ With pip you can install Flask and waitress very easily:
     sudo make uninstall  # just works from picontrol directory (the git repository you cloned)
     sudo userdel picontrol
 ```
+
+### Access the Web Page
+
+You just have to visit http://pi_IP_or_hostname:8080 in the browser of your choice.
