@@ -1,0 +1,13 @@
+
+[Unit]
+Description=Web Server to shutdown and poweroff the Pi using python-waitress
+After=network.target
+
+[Service]
+User=picontrol
+Group=picontrol
+WorkingDirectory=/usr/share/eu.xengineering.picontrol/
+ExecStart=/usr/bin/python3 /usr/share/eu.xengineering.picontrol/main.py
+
+[Install]
+WantedBy=multi-user.target
